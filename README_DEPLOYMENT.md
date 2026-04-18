@@ -10,7 +10,7 @@
 #    Name: ball-game-tg, Public, Add .gitignore (Node)
 
 # 2. Скопируй URL и выполни:
-git remote add origin https://github.com/USERNAME/ball-game-tg.git
+git remote add origin https://github.com/donatedlykirill-ctrl/ball-game-tg.git
 git push -u origin main
 
 # 3. При запросе пароля → https://github.com/settings/tokens → Generate token

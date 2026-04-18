@@ -27,10 +27,5 @@
       "src": "/.*",
       "dest": "/dist/index.html"
     }
-  ],
-  "env": {
-    "aruva_MONGODB_URI": "@aruva_MONGODB_URI",
-    "NODE_ENV": "production",
-    "PORT": "3000"
-  }
+  ]
 }
