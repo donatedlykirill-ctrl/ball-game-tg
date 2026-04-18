@@ -1,0 +1,176 @@
+════════════════════════════════════════════════════════════════
+  🚀 VERCEL DEPLOYMENT (STEP 2 & 3)
+════════════════════════════════════════════════════════════════
+
+✅ ШАГ 1 ЗАВЕРШЕН: Код на GitHub!
+📍 Репозиторий: https://github.com/donatedlykirill-ctrl/ball-game-tg
+
+════════════════════════════════════════════════════════════════
+
+📋 ЭТАП 2: BACKEND НА VERCEL (3 минуты)
+────────────────────────────────────────────────────────────────
+
+1️⃣ Открой Vercel Dashboard:
+   https://vercel.com/dashboard
+
+2️⃣ Нажми "Add New..." → "Project"
+
+3️⃣ Нажми "Import Git Repository"
+
+4️⃣ В поле вставь GitHub URL:
+   https://github.com/donatedlykirill-ctrl/ball-game-tg
+
+5️⃣ После выбора репозитория настрой:
+
+   ✓ Framework Preset:
+     → Node.js
+
+   ✓ Root Directory:
+     → Нажми "Edit"
+     → Выбери "backend"
+     → Нажми "Save"
+
+   ✓ Build Command:
+     → Оставь пустым (по умолчанию: npm run dev)
+
+   ✓ Environment Variables:
+     → Нажми "Add +" и добавь каждую переменную:
+     
+     MYSQL_HOST
+     Value: 127.0.0.1
+     
+     MYSQL_USER
+     Value: aruvaworkg
+     
+     MYSQL_PASSWORD
+     Value: jCc-Urj-Sba-G3i
+     
+     MYSQL_DATABASE
+     Value: aruvaworkg
+     
+     MYSQL_PORT
+     Value: 3308
+     
+     NODE_ENV
+     Value: production
+
+6️⃣ Нажми "Deploy"
+
+7️⃣ ⏳ Жди 2-3 минуты (наблюдай за строкой статуса)
+
+8️⃣ Когда закончится, получишь URL типа:
+   
+   🔗 https://ball-game-backend-abc123.vercel.app
+
+   ⚠️ СКОПИРУЙ ЭТОТ URL И СОХРАНИ! ⚠️
+   ⚠️ ТЫ ОБЯЗАТИЧНО НУЖЕН ДЛЯ ФРОНТЕНДА! ⚠️
+
+════════════════════════════════════════════════════════════════
+
+📋 ЭТАП 3: FRONTEND НА VERCEL (3 минуты)
+────────────────────────────────────────────────────────────────
+
+1️⃣ На Vercel Dashboard нажми "Add New..." → "Project"
+
+2️⃣ Нажми "Import Git Repository"
+
+3️⃣ Выбери ТОТ ЖЕ репозиторий:
+   donatedlykirill-ctrl/ball-game-tg
+
+4️⃣ Настрой:
+
+   ✓ Framework Preset:
+     → Vite
+
+   ✓ Root Directory:
+     → . (точка - корневая папка)
+
+   ✓ Build Command:
+     → npm run build
+
+   ✓ Output Directory:
+     → dist
+
+   ✓ Environment Variables:
+     → Добавь одну переменную:
+     
+     VITE_APP_API_URL
+     Value: https://ball-game-backend-abc123.vercel.app
+     
+     ⚠️ ЗАМЕНИ abc123 НА РЕАЛЬНЫЙ ID ИЗ BACKEND URL! ⚠️
+
+5️⃣ Нажми "Deploy"
+
+6️⃣ ⏳ Жди 2-3 минуты
+
+7️⃣ Получишь финальный URL типа:
+   
+   🎮 https://ball-game-frontend-xyz789.vercel.app
+
+════════════════════════════════════════════════════════════════
+
+✅ ЭТАП 4: ПРОВЕРКА (1 минута)
+────────────────────────────────────────────────────────────────
+
+1️⃣ Открой в браузере:
+   https://ball-game-frontend-xyz789.vercel.app
+
+2️⃣ Жди загрузки
+
+3️⃣ Нажми кнопку "Play"
+
+4️⃣ Наведи мышь на синий мяч
+
+5️⃣ Нажми "Launch Blue Ball"
+
+6️⃣ Запусти игру до конца раунда
+
+7️⃣ Открой консоль браузера (F12 → Console)
+
+8️⃣ Проверь что нет ошибок
+
+✅ ЕСЛИ ИГРА РАБОТАЕТ - ВСЁ ХОРОШО!
+
+════════════════════════════════════════════════════════════════
+
+❌ ЕСЛИ ЕСТЬ ОШИБКИ
+────────────────────────────────────────────────────────────────
+
+Ошибка: "Failed to load player"
+→ Проверь VITE_APP_API_URL в frontend Environment Variables
+→ Убедись что backend URL правильный
+
+Ошибка: "Cannot connect to database"
+→ Проверь MySQL credentials в backend Environment Variables
+→ Убедись что MYSQL_HOST и PORT правильные
+
+Ошибка: "Build failed"
+→ Посмотри Deployment Log на странице проекта
+→ Проверь что package.json правильный
+
+════════════════════════════════════════════════════════════════
+
+🎯 ФИНАЛЬНЫЕ URLs
+────────────────────────────────────────────────────────────────
+
+После успешного deployment у тебя будет:
+
+🔗 GitHub:
+   https://github.com/donatedlykirill-ctrl/ball-game-tg
+
+🚀 Backend API:
+   https://ball-game-backend-abc123.vercel.app
+
+🎮 Frontend Game:
+   https://ball-game-frontend-xyz789.vercel.app
+
+════════════════════════════════════════════════════════════════
+
+🎉 ПОЗДРАВЛЯЮ!
+
+Твоя BALL ARENA GAME теперь LIVE в интернете! 🚀
+
+Любые обновления - просто git push и Vercel автоматически
+перестроит оба проекта! ✨
+
+════════════════════════════════════════════════════════════════
