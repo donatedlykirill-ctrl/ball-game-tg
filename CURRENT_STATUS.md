@@ -1,4 +1,4 @@
-# 🎯 Текущий статус деплоя
+# 🎯 Текущий статус деплоя - ОБНОВЛЕНО
 
 ## ✅ Что сделано:
 
@@ -6,76 +6,82 @@
    - Фронтенд успешно развёрнут на: https://ball-game-tg.vercel.app
    - Загружается без ошибок
 
-2. **Backend deploy** ✅
+2. **Backend deploy с MongoDB** ✅
    - Backend успешно развёрнут на Vercel
-   - Все Environment Variables добавлены правильно
-   - Removed Secrets references из vercel.json
+   - **Миграция с MySQL на MongoDB** ✅
+   - Использует Vercel Storage MongoDB (переменная `aruva_MONGODB_URI`)
+   - Все старые MySQL переменные удалены
 
-3. **Environment Variables** ✅
-   - MYSQL_HOST: 127.0.0.1
-   - MYSQL_USER: aruvaworkg
-   - MYSQL_PASSWORD: jCc-Urj-Sba-G3i
-   - MYSQL_DATABASE: aruvaworkg
-   - MYSQL_PORT: 3308
-   - NODE_ENV: production
-   - PORT: 3000
+3. **Vercel MongoDB Storage** ✅
+   - Настроена база данных MongoDB
+   - Префикс: `aruva`
+   - Connection String автоматически задана в `aruva_MONGODB_URI`
 
 ---
 
-## ❌ ОСНОВНАЯ ПРОБЛЕМА:
+## 🔄 Что изменилось:
 
-**Backend не может подключиться к MySQL на production!**
+### Backend Server (Node.js/Express)
+- **Было:** MySQL с использованием `mysql2` пакета
+- **Теперь:** MongoDB с использованием `mongodb` пакета
+- **Коллекции:**
+  - `players` - данные игроков
+  - `player_upgrades` - улучшения игроков
+  - `round_history` - история раундов
 
-Причина: `MYSQL_HOST: 127.0.0.1` - это **localhost**, работает ТОЛЬКО локально.
-
-На Vercel нужен **ВНЕШНИЙ хост MySQL**, а не localhost.
-
----
-
-## 🔧 ЧТО НУЖНО СДЕЛАТЬ:
-
-### Вариант 1: Использовать внешний MySQL (Лучший вариант)
-
-Нужен **публичный адрес** MySQL сервера вместо `127.0.0.1`
-
-Варианты:
-- **AWS RDS** - управляемый MySQL
-- **DigitalOcean Managed Databases** 
-- **PlanetScale** (MySQL совместимый) - бесплатно!
-- **JawsDB** (через Heroku marketplace)
-- **Создать свой VPS с MySQL** и открыть порт 3308
-
-### Вариант 2: Использовать локальный MySQL через SSH туннель
-
-Сложнее, но дешевле - нужен туннель от Vercel к локальному хосту
+### API endpoints (не изменены):
+- `GET /health` - проверка здоровья (теперь показывает MongoDB статус)
+- `GET /api/player/:playerId` - загрузить данные игрока
+- `POST /api/player` - создать/обновить игрока
+- `POST /api/save-progress` - сохранить прогресс
+- `POST /api/save-round` - сохранить раунд
+- `GET /api/leaderboard` - получить лидерборд
+- `GET /api/player-stats/:playerId` - получить статистику игрока
 
 ---
 
-## 📋 Следующие шаги:
+## 📊 Текущые переменные окружения:
 
-1. Выбрать вариант хостинга для MySQL
-2. Создать/настроить внешний MySQL сервер
-3. Обновить MYSQL_HOST на реальный адрес (не 127.0.0.1)
-4. Обновить MYSQL_PORT если нужно (по умолчанию 3306)
-5. Запустить `vercel --prod` снова
-6. Проверить что фронтенд и бэкенд работают вместе
+| Переменная | Значение | Статус |
+|-----------|---------|--------|
+| aruva_MONGODB_URI | [Зашифрована] | ✅ Активна |
+| NODE_ENV | production | ✅ Активна |
+| PORT | 3000 | ✅ Активна |
 
 ---
 
 ## 🌐 URLs:
 
 - **Frontend**: https://ball-game-tg.vercel.app
-- **Backend**: развёрнут на Vercel (точный URL зависит от проекта)
-- **Health check**: https://ball-game-tg.vercel.app/health (фронтенд)
+- **Backend Health Check**: https://ball-game-tg.vercel.app/health
+- **Leaderboard API**: https://ball-game-tg.vercel.app/api/leaderboard
+- **Vercel Dashboard**: https://vercel.com/kiri1/ball-game-tg
 
 ---
 
-## 💡 Рекомендация:
+## ✨ Преимущества MongoDB:
 
-Используй **PlanetScale** (MySQL совместимый, бесплатно 5 БД):
-- Зарегистрируйся на https://planetscale.com
-- Создай БД
-- Получи connection string
-- Обнови переменные в Vercel
+1. ✅ **Облачное хранилище** - Vercel Storage (no localhost limitation)
+2. ✅ **Гибкая схема** - JSON структура (нет жёстких таблиц)
+3. ✅ **Масштабируемость** - автоматический масштабинг Vercel
+4. ✅ **Встроенность** - прямая интеграция с Vercel
+5. ✅ **NoSQL** - удобнее для игровых данных
 
-Это займёт 10 минут и не требует никаких платежей!
+---
+
+## 🚀 Следующие шаги (опционально):
+
+1. Протестировать API endpoints на production
+2. Убедиться что фронтенд корректно связывается с backend
+3. Мониторить логи на Vercel
+4. Добавить кешинг/оптимизацию если нужно
+
+---
+
+## 📝 Последний коммит:
+
+```
+feat: Migrate backend from MySQL to MongoDB - using Vercel MongoDB storage
+```
+
+**Дата:** 18 апреля 2026
