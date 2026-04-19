@@ -7,10 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "vercel-build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node server.js"
   },
   "dependencies": {
     "clsx": "2.1.1",
+    "express": "4.18.2",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "tailwind-merge": "3.4.0"
