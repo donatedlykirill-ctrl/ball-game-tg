@@ -1,1 +1,4 @@
-{}
+{
+  "buildCommand": "echo 'Static SPA'",
+  "outputDirectory": "dist"
+}
