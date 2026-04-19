@@ -1,11 +1,14 @@
 {
-  "buildCommand": "echo 'Static deployment - no build required'",
-  "outputDirectory": "dist",
-  "framework": null,
+  "builds": [
+    {
+      "src": "dist/**",
+      "use": "@vercel/static"
+    }
+  ],
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/(.*)",
+      "dest": "/dist/index.html"
     }
   ]
 }
