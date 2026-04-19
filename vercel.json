@@ -1,3 +1,5 @@
 {
-  "outputDirectory": "dist"
+  "buildCommand": "exit 0",
+  "outputDirectory": "dist",
+  "framework": null
 }
